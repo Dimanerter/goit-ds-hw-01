@@ -15,13 +15,16 @@ def input_error(func):
             return "The arguments are not correct."
         except TypeError:
             return "The arguments are not correct."
+
     return wrapper
+
 
 # Парсинг ввода
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
+
 
 # Функция для добавления контакта
 @input_error
@@ -36,7 +39,8 @@ def add_contact(args, book):
     else:
         record.add_phone(phone)
         return "Contact updated"
-    
+
+
 # Функция для изменения контакта
 @input_error
 def change_contact(args, book):
@@ -45,11 +49,13 @@ def change_contact(args, book):
     record.edit_phone(old_phone, new_phone)
     return "Contact updated"
 
+
 # Функция для отображения телефона по имени
 @input_error
 def show_phone(args, book):
     name, *_ = args
     return f"\n{book.find(name)}\n"
+
 
 # Функция для отображения всех контактов
 @input_error
@@ -58,6 +64,7 @@ def show_all(book):
         return "No contacts found."
     return f"All contacts:\n {book}"
 
+
 @input_error
 def add_birthday(args, book):
     name, birthday = args
@@ -65,15 +72,18 @@ def add_birthday(args, book):
     record.add_birthday(birthday)
     return "Contact updated"
 
+
 @input_error
 def show_birthday(args, book):
     name, *_ = args
     record = book.find(name)
     return f"{name}: {record.get_birthday()}"
 
+
 @input_error
 def birthdays(book):
     return book.get_upcoming_birthdays()
+
 
 def load_data(filename="addressbook.pkl"):
     try:
@@ -82,15 +92,17 @@ def load_data(filename="addressbook.pkl"):
     except FileNotFoundError:
         return AddressBook()
 
-def save_data(book, filename = "addressbook.pkl"):
+
+def save_data(book, filename="addressbook.pkl"):
     with open(filename, "wb") as f:
         pickle.dump(book, f)
+
 
 # Основная функция
 def main():
     book = load_data()
     print("Welcome to the assistant bot!")
-    
+
     while True:
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
@@ -118,5 +130,7 @@ def main():
             case _:
                 print("Invalid command.")
     save_data(book)
+
+
 if __name__ == "__main__":
     main()

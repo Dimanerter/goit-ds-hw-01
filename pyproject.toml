@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "personal-assistant"
+version = "0.1.0"
+description = "Personal_assistant"
+authors = ["Avdeev Dmitriy"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.7"
+requests = "2.32.3"
+datetime = "5.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
