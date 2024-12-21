@@ -1,3 +1,7 @@
 __pycache__/
 poetry.lock
+<<<<<<< HEAD
 .idea
+=======
+.idea
+>>>>>>> 37a6b2711d3df583dbc5c9aed5330b0de2bc2671
